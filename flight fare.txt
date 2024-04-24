@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airline Pricing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://e0.pxfuel.com/wallpapers/802/342/desktop-wallpaper-how-to-survive-a-21-hour-flight-travel-aesthetic-cute-airplane.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 50px;
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+        h1 {
+            text-align: center;
+            color: black;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+            color: black;
+            vertical-align: middle;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .output {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .input-group {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        input[type="text"],
+        input[type="date"],
+        input[type="number"],
+        select {
+            width: calc(50% - 16px);
+            box-sizing: border-box;
+            font-size: 12px;
+            color: skyblue;
+        }
+        input[type="button"] {
+            background-color: skyblue;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="button"]:hover {
+            background-color: #007bff;
+        }
+        .input-box {
+            margin-bottom: 10px;
+        }
+        .input-box table td {
+            width: 10%;
+        }
+        .input-box table select {
+            width: 50%;
+        }
+        .input-box table select,
+        .input-box table input[type="date"],
+        .input-box table input[type="number"] {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bg4 travel agency</h1>
+        <div class="input-box">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Departure Date</th>
+                        <th>Arrival Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="date" id="departureDate1"></td>
+                        <td><input type="date" id="arrivalDate1"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="input-box">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Source</th>
+                        <th>Destination</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><select id="source1">
+                            <option value="New Delhi">New Delhi</option>
+                            <option value="Kolkata">Kolkata</option>
+                            <option value="Mumbai">Mumbai</option>
+                            <option value="Chennai">Chennai</option>
+                            <option value="Dubai">Dubai</option>
+                            <option value="Sydney">Sydney</option>
+                        </select></td>
+                        <td><select id="destination1">
+                            <option value="New Delhi">New Delhi</option>
+                            <option value="Kolkata">Kolkata</option>
+                            <option value="Mumbai">Mumbai</option>
+                            <option value="Chennai">Chennai</option>
+                            <option value="Dubai">Dubai</option>
+                            <option value="Sydney">Sydney</option>
+                        </select></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="input-box">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Stoppages</th>
+                        <th>Airline</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="number" id="stoppages1"></td>
+                        <td><select id="airline1">
+                            <option value="Jet Airways">Jet Airways</option>
+                            <option value="IndiGo">IndiGo</option>
+                            <option value="Air India">Air India</option>
+                            <option value="Multiple carriers">Multiple carriers</option>
+                            <option value="SpiceJet">SpiceJet</option>
+                        </select></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="input-group">
+            <input type="button" value="Calculate Price" onclick="calculatePrice(1)">
+        </div>
+        <div class="output" id="output"></div>
+    </div>
+
+    <script>
+        function calculatePrice(index) {
+            var departureDate = document.getElementById("departureDate" + index).value;
+            var arrivalDate = document.getElementById("arrivalDate" + index).value;
+            var source = document.getElementById("source" + index).value;
+            var destination = document.getElementById("destination" + index).value;
+            var stoppages = parseInt(document.getElementById("stoppages" + index).value);
+            var airline = document.getElementById("airline" + index).value;
+            var price = Math.floor(Math.random() * 500) + 100;
+            var output = document.getElementById("output");
+            output.innerHTML = "Flight from " + source + " to " + destination + "<br>on " + departureDate + " with " + stoppages + " stoppages<br>by " + airline + " costs: $" + price;
+        }
+    </script>
+</body>
+</html>
